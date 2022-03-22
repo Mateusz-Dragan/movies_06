@@ -27,10 +27,10 @@ public class MovieApiController {
 
     @CrossOrigin
     @GetMapping(value = "/movies")
-    public ResponseEntity<List<MovieDto>> getMovies() {
+    public ResponseEntity<List<MovieDto>> getMovies(@RequestParam String search) {
         LOGGER.info("find all movies");
 
-        List<MovieDto> moviesDto = movieService.findAll();
+        List<MovieDto> moviesDto = movieService.findAll(search);
         return new ResponseEntity<>(moviesDto, HttpStatus.OK);
     }
 
@@ -73,10 +73,10 @@ public class MovieApiController {
 
     @CrossOrigin
     @GetMapping(value = "/movies/counter")
-    public ResponseEntity<MovieCounterDto> countMovies() {
+    public ResponseEntity<MovieCounterDto> countMovies(@RequestParam String search) {
         LOGGER.info("count movies");
 
-        MovieCounterDto movieCounterDto = movieService.countMovies();
+        MovieCounterDto movieCounterDto = movieService.countMovies(search);
         return new ResponseEntity<>(movieCounterDto, HttpStatus.OK);
     }
 

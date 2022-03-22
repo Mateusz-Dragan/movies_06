@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MovieService {
 
-    List<MovieDto> findAll();
+    List<MovieDto> findAll(String search);
 
     void creatMovie(CreateMovieDto createMovieDto);
 
@@ -14,7 +14,7 @@ public interface MovieService {
 
     DetailsMovieDto findMovie(Long movieId);
 
-    MovieCounterDto countMovies();
+    MovieCounterDto countMovies(String search);
 
     void updateMovie(Long movieId, UpdateMovieDto updateMovieDto);
 }

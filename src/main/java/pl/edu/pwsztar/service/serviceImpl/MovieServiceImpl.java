@@ -35,8 +35,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MovieDto> findAll() {
-        List<Movie> movies = movieRepository.findByOrderByYearDesc();
+    public List<MovieDto> findAll(String search) {
+        List<Movie> movies = movieRepository.findByOrderByYearDesc(search);
         return movieListMapper.convert(movies);
     }
 
@@ -63,8 +63,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieCounterDto countMovies() {
-        return new MovieCounterDto.Builder().counter(movieRepository.count()).build();
+    public MovieCounterDto countMovies(String search) {
+        return new MovieCounterDto.Builder().counter(movieRepository.countFindByOrderByYearDesc(search)).build();
     }
 
     @Override
